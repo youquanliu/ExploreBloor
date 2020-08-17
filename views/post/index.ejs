@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <h1><%= title %></h1>
+  <p>Welcome to <%= title %></p>
+  <p>
+    View one of the most popular street in Toronto
+  </p>
+  <p>
+    <a href="/main/new" class="btn btn-primary btn-lg">ADD NEW POST</a>
+  </p>
+
+  <table id="list" class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">1</th>
+        <th scope="col">2</th>
+        <th scope="col">3</th>
+        <th scope="col">4</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% posts.forEach(function(p) { %>
+      <tr>
+        <td><%= p.name %></td>
+        <td><%= p.image %></td>
+        <td><%= p.description %></td>
+        <td><%= p.departs %></td>
+        <td><a class="btn btn-info" href="/flights/<%= f._id %>">DETAILS</a></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+
+</html>
