@@ -5,13 +5,13 @@ const postsSchema = new mongoose.Schema({
     name: String,
     image: String,
     description: String,
-    author: {
-        id: {
-            type: Schema.Types.ObjectId,
-            ref: "User"
-        },
-        username: String
-    },
+    // author: {
+    //     id: {
+    //         type: Schema.Types.ObjectId,
+    //         ref: "User"
+    //     },
+    //     username: String
+    // },
     comments: [
         {
             type: Schema.Types.ObjectId,

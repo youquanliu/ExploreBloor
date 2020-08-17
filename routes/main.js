@@ -2,7 +2,9 @@ var express = require('express');
 var router = express.Router();
 var mainCtrl = require('../controllers/main');
 
-/* GET users listing. */
-router.get('/', mainCtrl.index);
 
+router.get('/', mainCtrl.index); //go to main
+router.get('/new', mainCtrl.showNew);   //go to new
+router.post('/new', mainCtrl.newPost);  //post new
+router.get('/:id', mainCtrl.show); //get detail page
 module.exports = router;

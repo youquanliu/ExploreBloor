@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/bloorPosts', {
+mongoose.connect('mongodb://localhost/bloor', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true
