@@ -27,40 +27,37 @@
                     <div class="caption-full">
                         <h4><a><%=post.name%></a></h4>
                         <p> <%= post.description %> </p>
-                        <!-- <p> <em> Submitted By <%= post.author.username %> </em> </p> -->
-                        <!-- <% if(currentUser && post.author.id.equals(currentUser._id)){ %> -->
+
                         <a class="btn btn-warning" href="/main/<%=post._id%>/edit">Edit</a>
                         <form class="delete-form" action="/main/<%=post._id%>?_method=DELETE" method="POST">
                             <button class="btn btn-danger">DELETE</button>
                         </form>
-                        <!-- <% } %> -->
-
                     </div>
                 </div>
                 <div class="well">
-                    <div class="text-right">
-                        <a class="btn btn-success" href="/main/<%=post._id%>/comments/new">Add New Comment</a>
-                    </div>
+                    <form action="/main/<%=post._id%>/comment" method="POST">
+                        <label for="text">Write some comments</label>
+                        <textarea id="text" name="text"></textarea>
+                        <button class="btn btn-success">Submit</button>
+                    </form>
                     <hr>
+                    <% if (post.comments.length) { %>
                     <% post.comments.forEach(function(comment){ %>
                     <div class="row">
                         <div class="col-md-12">
-                            <!-- <strong><%= comment.author.username  %></strong> -->
-                            <span class="pull-right">10days ago</span>
                             <p><%= comment.text %></p>
-                            <!-- <% if(currentUser && comment.author.id.equals(currentUser._id)){ %> -->
                             <a class="btn btn-xs btn-warning"
-                                href="/main/<%=post._id%>/comments/<%=comment._id%>/edit">Edit</a>
+                                href="/main/<%=post.id%>/comment/<%=comment.id%>/edit">Edit</a>
                             <form class="delete-form"
-                                action="/main/<%=post._id%>/comments/<%=comment._id%>?_method=DELETE" method=POST>
+                                action="/main/<%=post._id%>/comment/<%=comment._id%>?_method=DELETE" method=POST>
                                 <input type="submit" class="btn btn-xs btn-danger" value="Delete">
-
                             </form>
-                            <% } %>
-
                         </div>
                     </div>
                     <%}) %>
+                    <% } else { %>
+                    <h5>No Reviews Yet</h5>
+                    <% } %>
                 </div>
             </div>
         </div>

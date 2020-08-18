@@ -1,6 +1,6 @@
 var User = require('../models/user');
 var Posts = require('../models/posts');
-var Comment = require('../models/commment');
+var Comment = require('../models/comment');
 
 function index(req, res) {
     Posts.find({}, function (err, allPosts) {
@@ -36,9 +36,15 @@ function show(req, res) {
         })
 }
 
+function deletePost(req, res) {
+    Post.deleteOne(req.params.id);
+    res.redirect('/main');
+}
+
 module.exports = {
     index,
     newPost,
     showNew,
-    show
+    show,
+    delete: deletePost
 }
