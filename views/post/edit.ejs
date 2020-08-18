@@ -9,7 +9,7 @@
 
 <div class="container">
     <div class="row">
-        <h1 style="text-align: center">Create a new post</h1 style="text-align: center">
+        <h1 style="text-align: center">Editing <%= post.name %></h1 style="text-align: center">
         <%if(errors.length>0) { %>
         <div class="alert alert-danger"><% for(error of errors) { %>
             <%= error %><br>
@@ -17,20 +17,20 @@
         </div>
         <% } %>
         <div style="width:30%; margin: 25px auto;">
-            <form action="/main/new" method="POST">
+            <form action="/main/<%= post.id %>" method="POST">
                 <div class="form-group">
-                    <input class="form-control" type="text" name="name" placeholder="name"></input>
+                    <input class="form-control" type="text" name="name" placeholder="<%= post.name %>"></input>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="image" placeholder="image url"> </input>
+                    <input class="form-control" type="text" name="image" placeholder="<%= post.image %>"> </input>
                 </div>
 
                 <div class="form-group">
-                    <textarea class="form-control" type="text" name="description" rows="5"
-                        placeholder="description"> </textarea>
+                    <textarea class="form-control" type="text" name="description"
+                        rows="5"><%= post.description %> </textarea>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block">SUBMIT!</button>
+                    <button class="btn btn-lg btn-primary btn-block">UPDATE</button>
                 </div>
             </form>
             <a href="/main">GO BACK</a>

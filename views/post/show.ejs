@@ -11,8 +11,7 @@
 
 <body>
     <div class="container">
-        <div class="row">
-            <!-- <div class="col-md-3">
+        <!-- <div class="col-md-3">
             <p class="head">CampShare</p>
             <div class="list-group">
                 <li class="list-group-item">Info 1</li>
@@ -20,47 +19,50 @@
                 <li class="list-group-item">Info 3</li>
             </div>
         </div> -->
+        <%if(success.length>0) { %>
+        <div class="alert alert-success"><%= success %></div>
+        <% } %>
 
-            <div class="col-md-9">
-                <div class="thumbnail">
-                    <img class="img-responsive" src="<%=post.image%>">
-                    <div class="caption-full">
-                        <h4><a><%=post.name%></a></h4>
-                        <p> <%= post.description %> </p>
+        <div class="col-md-9">
+            <div class="thumbnail">
+                <img class="img-responsive" src="<%=post.image%>">
+                <div class="caption-full">
+                    <h4><a><%=post.name%></a></h4>
+                    <p> <%= post.description %> </p>
 
-                        <a class="btn btn-warning" href="/main/<%=post._id%>/edit">Edit</a>
-                        <form class="delete-form" action="/main/<%=post._id%>?_method=DELETE" method="POST">
-                            <button class="btn btn-danger">DELETE</button>
+                    <a class="btn btn-warning" href="/main/<%=post._id%>/edit">Edit</a>
+                    <form class="delete-form" action="/main/<%=post._id%>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger">DELETE</button>
+                    </form>
+                </div>
+            </div>
+            <div class="well">
+                <form action="/main/<%=post._id%>/comment" method="POST">
+                    <label for="text">Write some comments</label>
+                    <textarea id="text" name="text"></textarea>
+                    <button class="btn btn-success">Submit</button>
+                </form>
+                <hr>
+                <% if (post.comments.length) { %>
+                <% post.comments.forEach(function(comment){ %>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p><%= comment.text %></p>
+                        <a class="btn btn-xs btn-warning"
+                            href="/main/<%=post.id%>/comment/<%=comment.id%>/edit">Edit</a>
+                        <form class="delete-form" action="/main/<%=post._id%>/comment/<%=comment._id%>?_method=DELETE"
+                            method=POST>
+                            <input type="submit" class="btn btn-xs btn-danger" value="Delete">
                         </form>
                     </div>
                 </div>
-                <div class="well">
-                    <form action="/main/<%=post._id%>/comment" method="POST">
-                        <label for="text">Write some comments</label>
-                        <textarea id="text" name="text"></textarea>
-                        <button class="btn btn-success">Submit</button>
-                    </form>
-                    <hr>
-                    <% if (post.comments.length) { %>
-                    <% post.comments.forEach(function(comment){ %>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p><%= comment.text %></p>
-                            <a class="btn btn-xs btn-warning"
-                                href="/main/<%=post.id%>/comment/<%=comment.id%>/edit">Edit</a>
-                            <form class="delete-form"
-                                action="/main/<%=post._id%>/comment/<%=comment._id%>?_method=DELETE" method=POST>
-                                <input type="submit" class="btn btn-xs btn-danger" value="Delete">
-                            </form>
-                        </div>
-                    </div>
-                    <%}) %>
-                    <% } else { %>
-                    <h5>No Reviews Yet</h5>
-                    <% } %>
-                </div>
+                <%}) %>
+                <% } else { %>
+                <h5>No Reviews Yet</h5>
+                <% } %>
             </div>
         </div>
+
     </div>
 
 

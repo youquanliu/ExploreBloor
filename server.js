@@ -7,7 +7,7 @@ var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var flash = require('connect-flash');
-
+var expressValidator = require('express-validator');
 require('./config/database');
 
 var indexRouter = require('./routes/index');
@@ -26,15 +26,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true })); //grab info from form
+app.use(expressValidator());  //must right below body-parser to validat info from form
 app.use(session({
   secret: "my-super-secret",
   cookie: { maxAge: 60000 },
   resave: false,  //force the session to be saved back to the store
   saveUninitialized: false //dont save unmodifed
 }));
-
 app.use(flash());
+
 
 app.use('/', indexRouter);
 app.use('/main', mainRouter);
