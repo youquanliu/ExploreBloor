@@ -3,6 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var methodOverride = require('method-override');
+var bodyParser = require('body-parser');
+var session = require('express-session');
+var flash = require('connect-flash');
 
 require('./config/database');
 
@@ -21,6 +25,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({
+  secret: "my-super-secret",
+  cookie: { maxAge: 60000 },
+  resave: false,  //force the session to be saved back to the store
+  saveUninitialized: false //dont save unmodifed
+}));
+
+app.use(flash());
 
 app.use('/', indexRouter);
 app.use('/main', mainRouter);

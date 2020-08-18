@@ -7,7 +7,8 @@ function index(req, res) {
         if (err) console.log(err);
         res.render('post/index', {
             title: 'main page',
-            posts: allPosts
+            posts: allPosts,
+            success: req.flash('success')
         });
     });
 }
@@ -19,9 +20,11 @@ function newPost(req, res) {
     const post = new Posts(req.body);
     post.save(function (err) {
         if (err) return res.redirect('/main/new');
+        req.flash('success', 'Successfully created event!');
         res.redirect('/main');
     });
 }
+
 //show the detail page
 function show(req, res) {
     Posts.findById(req.params.id)
@@ -36,8 +39,10 @@ function show(req, res) {
         })
 }
 
-function deletePost(req, res) {
-    Post.deleteOne(req.params.id);
+async function deletePost(req, res) {
+    await Posts.deleteOne(
+        { _id: req.params.id }
+    );
     res.redirect('/main');
 }
 
