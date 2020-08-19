@@ -1,0 +1,169 @@
+* {
+    margin     : 0;
+    padding    : 0;
+    box-sizing : border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+a {
+    position       : relative;
+    transform      : translate(-50%, -50%);
+    width          : 200px;
+    height         : 160px;
+    text-align     : center;
+    line-height    : 60px;
+    color          : #fff;
+    font-size      : 24px;
+    text-transform : uppercase;
+    text-decoration: none;
+    background     : linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    background-size: 400%;
+    border-radius  : 30px;
+    z-index        : 1;
+
+}
+
+a:hover {
+    animation: buttonAnimate 8s linear infinite;
+}
+
+@keyframes buttonAnimate {
+    0% {
+        background-position: 0%;
+    }
+
+    100% {
+        background-position: 400%;
+
+    }
+}
+
+a:before {
+    content        : " ";
+    position       : relative;
+    z-index        : -1;
+    background     : linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    background-size: 400%;
+    border-radius  : 40px;
+    filter         : blur(20px);
+}
+
+a:hover:before {
+    filter   : blur(20px);
+    opacity  : 1;
+    animation: buttonAnimate 8s linear infinite;
+
+}
+
+section {
+    padding               : 0 100px;
+    /* background-image   : linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)), url('../images/landing-bg.jpg'); */
+    height                : 100vh;
+    display               : flex;
+    background-position   : center;
+    background-repeat     : no-repeat;
+    background-size       : cover;
+    align-items           : center;
+    flex-direction        : row-reverse;
+}
+
+.box {
+    position     : relative;
+    max-width    : 600px;
+    padding      : 50px;
+    /* background: rgba(255, 255, 255, .8); */
+    background   : linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    box-shadow   : 0 5px 25px rgba(0, 0, 0, 1);
+    z-index      : 999;
+}
+
+.box h1 {
+    margin        : 0 0 20px;
+    padding       : 0;
+    font-size     : 68px;
+    text-transform: uppercase;
+    color         : #fff;
+    font-weight   : 700;
+    font-family   : 'Dancing Script', cursive;
+}
+
+.box p {
+    margin     : 0;
+    padding    : 0;
+    font-size  : 18px;
+    font-family: 'Overpass', sans-serif;
+    font-weight: 400;
+    color      : #fff;
+
+}
+
+
+.slideshow {
+    position  : fixed;
+    width     : 100%;
+    height    : 100%;
+    top       : 0;
+    left      : 0;
+    z-index   : 0;
+    list-style: none;
+    margin    : 0;
+    padding   : 0;
+}
+
+.slideshow li {
+    width              : 100%;
+    height             : 100%;
+    position           : absolute;
+    top                : 0;
+    left               : 0;
+    background-size    : cover;
+    background-position: 50% 50%;
+    background-repeat  : no-repeat;
+    opacity            : 0;
+    z-index            : 0;
+    animation          : imageAnimation 40s linear infinite;
+}
+
+.slideshow li:nth-child(1) {
+    background-image: url('../images/landing-bg-1.jpg');
+}
+
+.slideshow li:nth-child(2) {
+    background-image: url('../images/landing-bg-2.jpg');
+    animation-delay : 5s;
+}
+
+.slideshow li:nth-child(3) {
+    background-image: url('../images/landing-bg-3.jpg');
+    animation-delay : 13s;
+}
+
+.slideshow li:nth-child(4) {
+    background-image: url('../images/landing-bg-4.jpg');
+    animation-delay : 20s;
+}
+
+.slideshow li:nth-child(5) {
+    background-image: url('../images/landing-bg-5.jpg');
+    animation-delay : 27s;
+}
+
+@keyframes imageAnimation {
+    0% {
+        opacity                  : 0;
+        animation-timing-function: ease-in;
+    }
+
+    10% {
+        opacity                  : 1;
+        animation-timing-function: ease-out;
+    }
+
+    20% {
+        opacity: 1
+    }
+
+    30% {
+        opacity: 0
+    }
+}
