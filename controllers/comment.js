@@ -30,7 +30,6 @@ function createComment(req, res) {
 };
 //comments destroy route
 function deleteComment(req, res) {
-    //findByIDAndRemove
     Comment.findByIdAndRemove(req.params.comment_id, function (err) {
         if (err) {
             res.redirect("/main");
