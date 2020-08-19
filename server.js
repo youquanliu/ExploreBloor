@@ -9,7 +9,7 @@ var session = require('express-session');
 var flash = require('connect-flash');
 var expressValidator = require('express-validator');
 require('./config/database');
-
+require('dotenv').config({ path: './.env' });
 var indexRouter = require('./routes/index');
 var mainRouter = require('./routes/main');
 var commentRouter = require('./routes/comment');
@@ -29,7 +29,7 @@ app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({ extended: true })); //grab info from form
 app.use(expressValidator());  //must right below body-parser to validat info from form
 app.use(session({
-  secret: "my-super-secret",
+  secret: process.env.SECRET,
   cookie: { maxAge: 60000 },
   resave: false,  //force the session to be saved back to the store
   saveUninitialized: false //dont save unmodifed

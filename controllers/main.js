@@ -32,7 +32,7 @@ function newPost(req, res) {
     const post = new Posts(req.body);
     post.save(function (err) {
         if (err) return res.redirect('/main/new');
-        req.flash('success', 'Successfully created event!');
+        //req.flash('success', 'Successfully created event!');
         res.redirect('/main');
     });
 }
@@ -42,7 +42,7 @@ function show(req, res) {
     Posts.findById(req.params.id)
         .populate('comments').exec((err, post) => {
             Comment.find({}, (err, comment) => {
-                console.log(comment);
+                console.log("++++++++++--------this is from main controller--------+++++++++++", comment);
                 res.render('post/show', {
                     comment,
                     post,

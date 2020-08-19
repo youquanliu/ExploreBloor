@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://frank:QuanQuan.0@frankcluster.voxkx.azure.mongodb.net/<dbname>?retryWrites=true&w=majority', {
+
+mongoose.connect('mongodb+srv://frank:QuanQuan.0@frankcluster.voxkx.azure.mongodb.net/ExploreBloor?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true

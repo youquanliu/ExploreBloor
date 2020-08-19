@@ -13,10 +13,10 @@
         <div style="width:30%; margin: 25px auto;">
             <form action="/main/<%= post.id %>" method="POST">
                 <div class="form-group">
-                    <input class="form-control" type="text" name="name" placeholder="<%= post.name %>"></input>
+                    <input class="form-control" type="text" name="name" value="<%= post.name %>"></input>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="image" placeholder="<%= post.image %>"> </input>
+                    <input class="form-control" type="text" name="image" value="<%= post.image %>"></input>
                 </div>
 
                 <div class="form-group">
