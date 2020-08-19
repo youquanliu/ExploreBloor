@@ -56,6 +56,7 @@ async function deletePost(req, res) {
     await Posts.deleteOne(
         { _id: req.params.id }
     );
+    req.flash('success', 'Successfully delete posting!');
     res.redirect('/main');
 }
 //go to editing page

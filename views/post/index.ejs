@@ -1,42 +1,33 @@
-<!DOCTYPE html>
-<html>
+<%- include ../partials/header %>
 
-<head>
-  <title><%= title %></title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
-
-<body>
-  <div class="jumbotron text-center">
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <p>
-      View one of the most popular street in Toronto
-    </p>
-  </div>
+<div class="jumbotron text-center">
+  <h1><%= title %></h1>
+  <p>Welcome to <%= title %></p>
   <p>
-    <a href="/main/new" class="btn btn-primary btn-lg">ADD NEW POST</a>
+    View one of the most popular street in Toronto
   </p>
+</div>
+<p>
+  <a href="/main/new" class="btn btn-primary btn-lg">ADD NEW POST</a>
+</p>
+<div class="row text-center">
+  <%if(success.length>0) { %>
+  <div class="alert alert-success"><%= success %></div>
+  <% } %>
 
-  <div class="row text-center" style="display:flex; flex-wrap:wrap;">
-    <%if(success.length>0) { %>
-    <div class="alert alert-success"><%= success %></div>
-    <% } %>
-    <% posts.forEach(function(p){ %>
-    <div class=" col-md-3 col-sm-6">
-      <div class="thumbnail">
-        <img src="<%= p.image %> ">
-        <div class="caption">
-          <h4><%= p.name %> </h4>
-        </div>
-        <p>
-          <a href="/main/<%=p._id%>" class="btn btn-primary">More Info</a>
-        </p>
+  <% posts.forEach(function(p){ %>
+  <div class=" col-md-3 col-sm-6">
+    <div class="thumbnail">
+      <img src="<%= p.image %> ">
+      <div class="caption">
+        <h4><%= p.name %> </h4>
       </div>
+      <p>
+        <a href="/main/<%=p._id%>" class="btn btn-primary">More Info</a>
+      </p>
     </div>
-    <%}); %>
   </div>
-</body>
+  <%}); %>
+</div>
 
-</html>
+<%- include ../partials/footer %>
