@@ -1,11 +1,11 @@
 <%- include ../partials/header %>
-<sction class="block"></sction>
 
 <div class="container">
     <div class="row">
         <h1 style="text-align: center">Editing <%= post.name %></h1 style="text-align: center">
         <%if(errors.length>0) { %>
-        <div class="alert alert-danger"><% for(error of errors) { %>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <% for(error of errors) { %>
             <%= error %><br>
             <% } %>
         </div>

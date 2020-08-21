@@ -3,16 +3,21 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
+var passport = require('passport');
+
 var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
-var session = require('express-session');
 var flash = require('connect-flash');
 var expressValidator = require('express-validator');
-require('./config/database');
 require('dotenv').config({ path: './.env' });
+require('./config/database');
+require('./config/passport')(passport);
+
 var indexRouter = require('./routes/index');
 var mainRouter = require('./routes/main');
 var commentRouter = require('./routes/comment');
+var userRoutes = require('./routes/user');
 
 var app = express();
 
@@ -34,12 +39,15 @@ app.use(session({
   resave: false,  //force the session to be saved back to the store
   saveUninitialized: false //dont save unmodifed
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
 
 
 app.use('/', indexRouter);
 app.use('/main', mainRouter);
 app.use('/', commentRouter);
+app.use('/', userRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -51,11 +59,17 @@ app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
   // render the error page
   res.status(err.status || 500);
   res.render('error');
   next();
 });
-
+//global vars
+app.use(function (req, res, next) {
+  res.locals.currentUser = req.user;
+  res.locals.error_msg = req.flash("error_msg"); //register
+  res.locals.err = req.flash("err");  //for log in
+  res.locals.success_msg = req.flash("success_msg"); //register
+  next();
+});
 module.exports = app;

@@ -18,9 +18,5 @@ const postsSchema = new Schema({
         ref: "Comment"
     }]
 });
-// const postsSchema = new Schema({
-//     image: {
-//         type: String
-//     }
-// })
+
 module.exports = mongoose.model("Posts", postsSchema);
