@@ -9,6 +9,7 @@ router.post('/user/login', userCtrl.postLogin);   //post login
 router.get('/user/register', userCtrl.register); //go to register
 router.post('/user/register', userCtrl.postRegister); //post register
 
+router.get('/user/logout', userCtrl.logout); //log out the user
 // POST /facts
 // We will already have access to the logged in student on
 // the server, therefore do not use: /students/:id/facts

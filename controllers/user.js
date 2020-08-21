@@ -8,6 +8,7 @@ module.exports = {
     register,
     postLogin,
     postRegister,
+    logout
     // addFact,
     // delFact
 };
@@ -38,17 +39,22 @@ function login(req, res) {
 }
 
 function postLogin(req, res, next) {
-    passport.authenticate("local",
-        {
-            successRedirect: "/main",
-            failureRedirect: "/user/login",
-            failureFlash: true
-        })(req, res, next);
+    passport.authenticate("local", {
+        successRedirect: "/main",
+        failureRedirect: "/user/login",
+        failureFlash: true
+    })(req, res, next);
 }
+
 
 function register(req, res) {
     res.render('user/register');
 }
+function logout(req, res) {
+    req.logout();
+    req.flash("success", "logged you out!");
+    res.redirect("/main");
+};
 
 function postRegister(req, res) {
     const { name, email, password, password2 } = req.body;

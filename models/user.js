@@ -13,11 +13,19 @@ const userSchema = new Schema({
     name: String,
     password: String,
     email: String,
+    googleId: String,
     date: { type: Date, default: Date.now },
     cohort: String,
     avatar: String,
     facts: [factSchema],
-    googleId: String
+    comments: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment"
+    }],
+    posts: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Post"
+    }]
 }, {
     timestamps: true
 });
