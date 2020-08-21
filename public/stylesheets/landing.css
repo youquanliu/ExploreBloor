@@ -56,14 +56,14 @@ a:hover:before {
 }
 
 section {
-    padding               : 0 100px;
-    height                : 100vh;
-    display               : flex;
-    background-position   : center;
-    background-repeat     : no-repeat;
-    background-size       : cover;
-    align-items           : center;
-    flex-direction        : row-reverse;
+    padding            : 0 100px;
+    height             : 100vh;
+    display            : flex;
+    background-position: center;
+    background-repeat  : no-repeat;
+    background-size    : cover;
+    align-items        : center;
+    flex-direction     : row-reverse;
 }
 
 .box {
@@ -79,7 +79,7 @@ section {
 .box h1 {
     margin        : 0 0 20px;
     padding       : 0;
-    font-size     : 68px;
+    font-size     : 58px;
     text-transform: uppercase;
     color         : #fff;
     font-weight   : 700;
