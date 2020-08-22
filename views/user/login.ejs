@@ -1,10 +1,11 @@
 <% include ../partials/header%>
+<div class="container">
 
-<div class="row mt-5">
-    <div class="col-md-6 m-auto">
-        <div class="card card-body">
-            <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i> Login</h1>
-            <%// include ../partials/messages%>
+    <div class="row">
+        <h1 style="text-align: center"> Login</h1>
+        <%// include ../partials/messages%>
+        <div style="width:30%; margin: 25px auto;">
+
             <form action="/user/login" method="POST">
                 <div class="form-group">
                     <label for="email">Email</label>

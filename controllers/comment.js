@@ -1,6 +1,12 @@
 const Comment = require('../models/comment');
 const Posts = require('../models/posts');
 
+function index(req, res) {
+    res.render('post/show', {
+        errors: req.flash('errors'),
+        success: req.flash('success')
+    });
+}
 //comments create
 function createComment(req, res) {
     Posts.findById(req.params.id, function (err, post) {
@@ -14,12 +20,12 @@ function createComment(req, res) {
                     console.log(err);
                 } else {
                     // add username and id to comment
-                    // comment.author.id = req.user._id;
-                    // comment.author.username = req.user.username;
+                    comment.author.id = req.user._id;
+                    comment.author.username = req.user.name;
+                    console.log("~~~~~~~~~~~~~Comment author is ", comment.author)
                     //save comment
                     comment.save();
                     post.comments.push(comment);
-                    console.log("~~~~~~~~~~~~~", post.comments);
                     post.save();
                     req.flash("success", "Successfully created comment");
                     res.redirect(`/main/${post.id}`);
@@ -41,6 +47,7 @@ function deleteComment(req, res) {
 };
 
 module.exports = {
+    index,
     createComment,
     delete: deleteComment
 };

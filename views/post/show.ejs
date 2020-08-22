@@ -1,15 +1,7 @@
 <%- include ../partials/header %>
 
 <div class="container">
-    <!-- <div class="col-md-3">
-            <p class="head">CampShare</p>
-            <div class="list-group">
-                <li class="list-group-item">Info 1</li>
-                <li class="list-group-item">Info 2</li>
-                <li class="list-group-item">Info 3</li>
-            </div>
-        </div>
-    -->
+
     <%if(success.length>0) { %>
     <div class="alert alert-success"><%= success %></div>
     <% } %>
@@ -20,7 +12,7 @@
             <div class="caption-full">
                 <h4><a><%=post.name%></a></h4>
                 <p> <%= post.description %> </p>
-
+                <p> <em> Submitted By <%= post.author.username %> </em> </p>
                 <a class="btn btn-warning" href="/main/<%=post._id%>/edit">Edit</a>
                 <form class="delete-form" action="/main/<%=post._id%>?_method=DELETE" method="POST">
                     <button class="btn btn-danger">DELETE</button>
@@ -34,11 +26,13 @@
                 <button class="btn btn-success">Submit</button>
             </form>
             <hr>
+
             <% if (post.comments.length) { %>
             <% post.comments.forEach(function(comment){ %>
             <div class="row">
                 <div class="col-md-12">
-                    <p><%= comment.text %></p>
+                    <strong><%= comment.author.username  %> said</strong>
+                    <p>&#65282;<%= comment.text %>&#65282;</p>
                     <form class="delete-form" action="/main/<%=post._id%>/comment/<%=comment._id%>?_method=DELETE"
                         method=POST>
                         <input type="submit" class="btn btn-xs btn-danger" value="Delete">

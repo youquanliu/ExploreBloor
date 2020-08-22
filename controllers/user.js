@@ -9,8 +9,7 @@ module.exports = {
     postLogin,
     postRegister,
     logout
-    // addFact,
-    // delFact
+
 };
 
 function index(req, res, next) {
@@ -50,6 +49,7 @@ function postLogin(req, res, next) {
 function register(req, res) {
     res.render('user/register');
 }
+
 function logout(req, res) {
     req.logout();
     req.flash("success", "logged you out!");
@@ -97,8 +97,8 @@ function postRegister(req, res) {
                             //save user
                             newUser.save(function (err) {
                                 if (err) console.log(err);
-                                req.flash('success', 'You are now registed nad can log in');
                                 res.redirect('/user/login');
+                                req.flash('success', 'You are now registed and can log in');
                             })
                         })
                     })

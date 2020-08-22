@@ -6,18 +6,20 @@ function index(req, res) {
     Posts.find({}, function (err, allPosts) {
         if (err) console.log(err);
         res.render('post/index', {
-            title: 'main page',
             posts: allPosts,
-            success: req.flash('success')
+            success: req.flash('success'),
+            User
         });
     });
 }
+//Show form for new post
 function showNew(req, res) {
     res.render('post/new', {
         errors: req.flash('errors')
     });
 }
 
+//Create new post
 function newPost(req, res) {
     //validate info
     req.checkBody('name', 'Name is required').notEmpty();
@@ -27,10 +29,16 @@ function newPost(req, res) {
     const errors = req.validationErrors();
     if (errors) {
         req.flash('errors', errors.map(err => err.msg));
-        return res.redirect('/main/new');
+        res.redirect('/main/new');
     }
-    const post = new Posts(req.body);
-    post.save(function (err) {
+    var newPost = new Posts(req.body);
+    newPost.author = {
+        id: req.user._id,
+        username: req.user.name
+    };
+
+    console.log("-----------", newPost.author);
+    newPost.save(function (err) {
         if (err) return res.redirect('/main/new');
         //req.flash('success', 'Successfully created event!');
         res.redirect('/main');
