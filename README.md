@@ -1,20 +1,22 @@
 # ExploreBloor
 
-### Website for people who like Bloor Street in Toronto
-### Kenny are flying to get them out of there, can you help him to earn enough tokens for buying them feedom?    
-### Place bet to start the game, the bet has maximun $10 limitation and can not to re-bet once the game start
-### Once you hit 1000 tokens, you will win and all folks would get their freedom ! 
+ExploreBloor is dedicated for people who like Bloor Street in Toronto
+Viter could registed, and post their favourite spot on Bloor street. They also can edit and delete the posts. All data store on MongoDB      
+Other loged in user can leave their comment under each post
+Validation and flash applied
 
-![Page One](/img/screenshot-one.png?raw=true "First page of game")
-![Page Two](/img/screenshot-two.png?raw=true "Second page of game")
+![Page One](public/images/screenshot.png?raw=true "First page of game")
+![Page Two](public/images/screenshot2.png?raw=true "Second page of game")
+![Page Three](public/images/screenshot3.png?raw=true "Second page of game")
 
 
 ## Techologies Used
 
 * Node.js
 * Express
-* Mongodb
-* ejs
+* Mongodb/Mongoose
+* RESTful
+* CRUD
 
 
 ## Getting Started
@@ -26,5 +28,5 @@
 
 * Validate login user to post or leave comments
 * loged in user could leave comments to other comments
-* Applied feasure that user can upload picture feom local
+* Applied feasure that user can upload picture from local
 
