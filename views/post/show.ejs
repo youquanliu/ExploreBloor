@@ -13,7 +13,7 @@
                 <h4><a><%=post.name%></a></h4>
                 <p> <%= post.description %> </p>
                 <p> <em> Submitted By <%= post.author.username %> </em> </p>
-                <a class="btn btn-warning" href="/main/<%=post._id%>/edit">Edit</a>
+                <a class="btn btn-warning " href="/main/<%=post._id%>/edit">Edit</a>
                 <form class="delete-form" action="/main/<%=post._id%>?_method=DELETE" method="POST">
                     <button class="btn btn-danger">DELETE</button>
                 </form>

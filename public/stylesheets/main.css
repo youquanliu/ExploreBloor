@@ -9,7 +9,6 @@ body {
   background-color: #FBEEC1;
   min-height      : 200vh;
   font-family     : 'Overpass', sans-serif;
-
 }
 
 header {
@@ -26,7 +25,7 @@ header {
 }
 
 header.sticky {
-  padding   : 5px 100px;
+  padding   : 5px 50px;
   background: #fff;
 }
 
@@ -79,4 +78,15 @@ header ul li a {
 
 h1 {
   font-family: 'Dancing Script', cursive;
+}
+
+.container-table {
+  display      : table;
+  margin-bottom: 50px;
+  
+}
+
+.vertical-center-row {
+  display       : table-cell;
+  vertical-align: middle;
 }
