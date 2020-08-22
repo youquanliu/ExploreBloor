@@ -5,9 +5,9 @@ Viter could registed, and post their favourite spot on Bloor street. They also c
 Other loged in user can leave their comment under each post
 Validation and flash applied
 
-![Page One](public/images/screenshot.png?raw=true "First page of game")
-![Page Two](public/images/screenshot2.png?raw=true "Second page of game")
-![Page Three](public/images/screenshot3.png?raw=true "Second page of game")
+![Page One](public/images/Screenshot.png?raw=true "First page of game")
+![Page Two](public/images/Screenshot2.png?raw=true "Second page of game")
+![Page Three](public/images/Screenshot3.png?raw=true "Second page of game")
 
 
 ## Techologies Used
